@@ -1,5 +1,6 @@
 import java.awt.Color;
 import java.awt.EventQueue;
+import java.awt.Frame;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -63,8 +64,12 @@ public class StartScreen {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
-		JButton btnStart = new JButton("Start");
-		btnStart.setBounds(10, 430, 89, 23);
+		final JLabel lblRules = new JLabel("Rules:");
+		lblRules.setBounds(10, 10, 89, 20);
+		frame.getContentPane().add(lblRules);
+		
+		final JButton btnStart = new JButton("Start");
+		btnStart.setBounds(10, 178, 372, 265);
 		frame.getContentPane().add(btnStart);
 		
 		/**
@@ -76,13 +81,11 @@ public class StartScreen {
 		frame.getContentPane().add(panelGridOne);
 		panelGridOne.setLayout(null);
 		panelGridOne.setVisible(false);
-		
-		GridsFill loadGrid = new GridsFill();
-
 		final JPanel panelGrid1 = new JPanel();
 		panelGrid1.setBounds(10, 11, 361, 394);
 		panelGridOne.add(panelGrid1);
 		panelGrid1.setLayout(new GridLayout(15, 15, 5, 5));
+		GridsFill loadGrid = new GridsFill();
 		final JLabel[][] labels = new JLabel[15][15];
 		for (int r = 0; r < 15; r++){
 			for (int c = 0; c < 15; c++){
@@ -361,7 +364,6 @@ public class StartScreen {
 		frame.getContentPane().add(panelGridTwo);
 		panelGridTwo.setLayout(null);
 		panelGridTwo.setVisible(false);
-		frame.getContentPane().add(panelGridTwo);
 		
 		JPanel panelGrid2 = new JPanel();
 		panelGrid2.setBounds(10, 11, 361, 394);
@@ -380,6 +382,7 @@ public class StartScreen {
 	    JLabel lbl2GTimer = new JLabel("Timer:");
 		lbl2GTimer.setBounds(381, 11, 57, 14);
 	    panelGridTwo.add(lbl2GTimer);
+		
 	    
 		JLabel lbl2G1 = new JLabel("1:");
 		lbl2G1.setBounds(381, 52, 10, 14);
@@ -635,18 +638,28 @@ public class StartScreen {
 		lbl2GTimeValue.setBounds(425, 11, 46, 14);
 		panelGridTwo.add(lbl2GTimeValue);
 		
-		/**
-		 * End of Grid Two Initialization.
-		 */
-		/**
-		 * Initialize the contents for High Scores.
-		 */
-		JPanel panelHighScores = new JPanel();
-		panelHighScores.setBounds(40, 10, 10, 10);
-		panelHighScores.setLayout(null);
+		final JLabel lblRules1 = new JLabel("Type the letters into the corresponding textbox.");
+		lblRules1.setBounds(10, 43, 407, 14);
+		frame.getContentPane().add(lblRules1);
+		
+		final JLabel lblRules2 = new JLabel("Press hint to get a random letter. It may be one you already know.");
+		lblRules2.setBounds(10, 68, 322, 14);
+		frame.getContentPane().add(lblRules2);
+		
+		final JLabel lblRules3 = new JLabel("Press check to verify guesses.");
+		lblRules3.setBounds(10, 99, 322, 14);
+		frame.getContentPane().add(lblRules3);
+		
+		final JLabel lblRules4 = new JLabel("0s are blank spaces");
+		lblRules4.setBounds(10, 130, 322, 14);
+		frame.getContentPane().add(lblRules4);
+		
+		final JLabel lblRules5 = new JLabel("Have Fun!");
+		lblRules5.setBounds(6, 155, 326, 14);
+		frame.getContentPane().add(lblRules5);
 		
 		/**
-		 * End of High Scores Initialization.
+		 * End of Grid Two Initialization.
 		 */
 		
 		/**
@@ -715,7 +728,13 @@ public class StartScreen {
 				txt2G12.setText("W");
 				txt2G17.setText("Q");
 				watch.StopwatchStart();
-				
+				lblRules.setVisible(false);
+				lblRules1.setVisible(false);
+				lblRules2.setVisible(false);
+				lblRules3.setVisible(false);
+				lblRules4.setVisible(false);
+				lblRules5.setVisible(false);
+				btnStart.setVisible(false);
 			}
 		});
 		
@@ -1091,6 +1110,9 @@ public class StartScreen {
 						for (int i = 0; i < row1.length; i++){
 							labels[row1[i]][col1[i]].setBorder(BorderFactory.createLineBorder(Color.red));
 						}
+						for (int i = 0; i < row1.length; i++){
+							labels[row1[i]][col1[i]].setText("1");
+						}
 					}
 				}
 				
@@ -1102,6 +1124,9 @@ public class StartScreen {
 					}else{
 						for (int i = 0; i < row2.length; i++){
 							labels[row2[i]][col2[i]].setBorder(BorderFactory.createLineBorder(Color.red));
+						}
+						for (int i = 0; i < row2.length; i++){
+							labels[row2[i]][col2[i]].setText("2");
 						}
 					}
 				}
@@ -1115,6 +1140,9 @@ public class StartScreen {
 						for (int i = 0; i < row3.length; i++){
 							labels[row3[i]][col3[i]].setBorder(BorderFactory.createLineBorder(Color.red));
 						}
+						for (int i = 0; i < row3.length; i++){
+							labels[row3[i]][col3[i]].setText("3");
+						}
 					}
 				}
 				
@@ -1126,6 +1154,9 @@ public class StartScreen {
 					}else{
 						for (int i = 0; i < row4.length; i++){
 							labels[row4[i]][col4[i]].setBorder(BorderFactory.createLineBorder(Color.red));
+						}
+						for (int i = 0; i < row4.length; i++){
+							labels[row4[i]][col4[i]].setText("4");
 						}
 					}
 				}
@@ -1139,6 +1170,9 @@ public class StartScreen {
 						for (int i = 0; i < row5.length; i++){
 							labels[row5[i]][col5[i]].setBorder(BorderFactory.createLineBorder(Color.red));
 						}
+						for (int i = 0; i < row5.length; i++){
+							labels[row5[i]][col5[i]].setText("5");
+						}
 					}
 				}
 				
@@ -1150,6 +1184,9 @@ public class StartScreen {
 					}else{
 						for (int i = 0; i < row6.length; i++){
 							labels[row6[i]][col6[i]].setBorder(BorderFactory.createLineBorder(Color.red));
+						}
+						for (int i = 0; i < row6.length; i++){
+							labels[row6[i]][col6[i]].setText("6");
 						}
 					}
 				}
@@ -1163,6 +1200,9 @@ public class StartScreen {
 						for (int i = 0; i < row7.length; i++){
 							labels[row7[i]][col7[i]].setBorder(BorderFactory.createLineBorder(Color.red));
 						}
+						for (int i = 0; i < row7.length; i++){
+							labels[row7[i]][col7[i]].setText("7");
+						}
 					}
 				}
 				
@@ -1174,6 +1214,9 @@ public class StartScreen {
 					}else{
 						for (int i = 0; i < row9.length; i++){
 							labels[row9[i]][col9[i]].setBorder(BorderFactory.createLineBorder(Color.red));
+						}
+						for (int i = 0; i < row9.length; i++){
+							labels[row9[i]][col9[i]].setText("9");
 						}
 					}
 				}
@@ -1187,6 +1230,9 @@ public class StartScreen {
 						for (int i = 0; i < row10.length; i++){
 							labels[row10[i]][col10[i]].setBorder(BorderFactory.createLineBorder(Color.red));
 						}
+						for (int i = 0; i < row10.length; i++){
+							labels[row10[i]][col10[i]].setText("10");
+						}
 					}
 				}
 				
@@ -1199,14 +1245,18 @@ public class StartScreen {
 						for (int i = 0; i < row12.length; i++){
 							labels[row12[i]][col12[i]].setBorder(BorderFactory.createLineBorder(Color.red));
 						}
+						for (int i = 0; i < row12.length; i++){
+							labels[row12[i]][col12[i]].setText("12");
+						}
 					}
 				}
 				
 				if (currValue13 != null){
 					if (currValue13.equalsIgnoreCase("G")){
-							labels[3][8].setBorder(BorderFactory.createLineBorder(Color.green));
+						labels[3][8].setBorder(BorderFactory.createLineBorder(Color.green));
 					}else{
-							labels[3][8].setBorder(BorderFactory.createLineBorder(Color.red));
+						labels[3][8].setBorder(BorderFactory.createLineBorder(Color.red));
+						labels[3][8].setText("13");
 					}
 				}
 				
@@ -1218,6 +1268,9 @@ public class StartScreen {
 					}else{
 						for (int i = 0; i < row14.length; i++){
 							labels[row14[i]][col14[i]].setBorder(BorderFactory.createLineBorder(Color.red));
+						}
+						for (int i = 0; i < row14.length; i++){
+							labels[row14[i]][col14[i]].setText("14");
 						}
 					}
 				}
@@ -1231,6 +1284,9 @@ public class StartScreen {
 						for (int i = 0; i < row15.length; i++){
 							labels[row15[i]][col15[i]].setBorder(BorderFactory.createLineBorder(Color.red));
 						}
+						for (int i = 0; i < row15.length; i++){
+							labels[row15[i]][col15[i]].setText("15");
+						}
 					}
 				}
 				
@@ -1242,6 +1298,9 @@ public class StartScreen {
 					}else{
 						for (int i = 0; i < row16.length; i++){
 							labels[row16[i]][col16[i]].setBorder(BorderFactory.createLineBorder(Color.red));
+						}
+						for (int i = 0; i < row16.length; i++){
+							labels[row16[i]][col16[i]].setText("16");
 						}
 					}
 				}
@@ -1255,6 +1314,9 @@ public class StartScreen {
 						for (int i = 0; i < row17.length; i++){
 							labels[row17[i]][col17[i]].setBorder(BorderFactory.createLineBorder(Color.red));
 						}
+						for (int i = 0; i < row17.length; i++){
+							labels[row17[i]][col17[i]].setText("17");
+						}
 					}
 				}
 				
@@ -1266,6 +1328,9 @@ public class StartScreen {
 					}else{
 						for (int i = 0; i < row18.length; i++){
 							labels[row18[i]][col18[i]].setBorder(BorderFactory.createLineBorder(Color.red));
+						}
+						for (int i = 0; i < row18.length; i++){
+							labels[row18[i]][col18[i]].setText("18");
 						}
 					}
 				}
@@ -1279,6 +1344,9 @@ public class StartScreen {
 						for (int i = 0; i < row19.length; i++){
 							labels[row19[i]][col19[i]].setBorder(BorderFactory.createLineBorder(Color.red));
 						}
+						for (int i = 0; i < row19.length; i++){
+							labels[row19[i]][col19[i]].setText("19");
+						}
 					}
 				}
 				
@@ -1290,6 +1358,9 @@ public class StartScreen {
 					}else{
 						for (int i = 0; i < row21.length; i++){
 							labels[row21[i]][col21[i]].setBorder(BorderFactory.createLineBorder(Color.red));
+						}
+						for (int i = 0; i < row21.length; i++){
+							labels[row21[i]][col21[i]].setText("21");
 						}
 					}
 				}
@@ -1303,6 +1374,9 @@ public class StartScreen {
 						for (int i = 0; i < row22.length; i++){
 							labels[row22[i]][col22[i]].setBorder(BorderFactory.createLineBorder(Color.red));
 						}
+						for (int i = 0; i < row22.length; i++){
+							labels[row22[i]][col22[i]].setText("22");
+						}
 					}
 				}
 				
@@ -1314,6 +1388,9 @@ public class StartScreen {
 					}else{
 						for (int i = 0; i < row23.length; i++){
 							labels[row23[i]][col23[i]].setBorder(BorderFactory.createLineBorder(Color.red));
+						}
+						for (int i = 0; i < row23.length; i++){
+							labels[row23[i]][col23[i]].setText("23");
 						}
 					}
 				}
@@ -1327,6 +1404,9 @@ public class StartScreen {
 						for (int i = 0; i < row24.length; i++){
 							labels[row24[i]][col24[i]].setBorder(BorderFactory.createLineBorder(Color.red));
 						}
+						for (int i = 0; i < row24.length; i++){
+							labels[row24[i]][col24[i]].setText("24");
+						}
 					}
 				}
 				
@@ -1339,6 +1419,9 @@ public class StartScreen {
 						for (int i = 0; i < row25.length; i++){
 							labels[row25[i]][col25[i]].setBorder(BorderFactory.createLineBorder(Color.red));
 						}
+						for (int i = 0; i < row25.length; i++){
+							labels[row25[i]][col25[i]].setText("25");
+						}
 					}
 				}
 				
@@ -1347,6 +1430,7 @@ public class StartScreen {
 						labels[12][12].setBorder(BorderFactory.createLineBorder(Color.green));
 					}else{
 						labels[12][12].setBorder(BorderFactory.createLineBorder(Color.red));
+						labels[12][12].setText("26");
 					}
 				}
 			}
@@ -1354,12 +1438,23 @@ public class StartScreen {
 		
 		btn1GHint.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				String[] allValues = {"Y", "B", "A", "E", "C", "T", "S", "K", "D", "U", "G", "L", "H", "O", "M", "R", "N", "Z", "I", "P", "F", "W", "V"};
-				Random getRandomHint = new Random();
-				int hintIndex = getRandomHint.nextInt(26);
-				int hintValue = hintIndex + 1;
-				String currentHint = allValues[hintIndex];
-				JOptionPane.showInputDialog("The letter for #" + hintValue + " is " + currentHint);
+				HintFunction getHintOne = new HintFunction();
+				getHintOne.getRandomHintOne();
+				JOptionPane.showMessageDialog(null, "The letter for #" + getHintOne.getHintValueOne() + " is " + getHintOne.getCurrentHintOne());
+			}
+		});
+		
+		btn1GRestart.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+					panelGridOne.setVisible(false);
+					timer1var = 0;
+					lblRules.setVisible(true);
+					lblRules1.setVisible(true);
+					lblRules2.setVisible(true);
+					lblRules3.setVisible(true);
+					lblRules4.setVisible(true);
+					lblRules5.setVisible(true);
+					btnStart.setVisible(true);
 			}
 		});
 		
@@ -1371,7 +1466,6 @@ public class StartScreen {
 					double timeElapsed = watch.elapsedTime();
 					ttaskvar.cancel();
 					StoreScore saveScore = new StoreScore();
-					saveScore.setScore(timeElapsed);
 					saveScore.setScore(timeElapsed);
 					JOptionPane.showMessageDialog(null, "Finished in " + timeElapsed);
 					String userName;
@@ -1746,6 +1840,9 @@ public class StartScreen {
 						for (int i = 0; i < row2.length; i++){
 							labelsG2[row2[i]][col2[i]].setBorder(BorderFactory.createLineBorder(Color.red));
 						}
+						for (int i = 0; i < row2.length; i++){
+							labelsG2[row2[i]][col2[i]].setText("2");
+						}
 					}
 				}
 				
@@ -1757,6 +1854,9 @@ public class StartScreen {
 					}else{
 						for (int i = 0; i < row3.length; i++){
 							labelsG2[row3[i]][col3[i]].setBorder(BorderFactory.createLineBorder(Color.red));
+						}
+						for (int i = 0; i < row3.length; i++){
+							labelsG2[row3[i]][col3[i]].setText("3");
 						}
 					}
 				}
@@ -1770,6 +1870,9 @@ public class StartScreen {
 						for (int i = 0; i < row4.length; i++){
 							labelsG2[row4[i]][col4[i]].setBorder(BorderFactory.createLineBorder(Color.red));
 						}
+						for (int i = 0; i < row4.length; i++){
+							labelsG2[row4[i]][col4[i]].setText("4");
+						}
 					}
 				}
 				
@@ -1782,6 +1885,9 @@ public class StartScreen {
 						for (int i = 0; i < row5.length; i++){
 							labelsG2[row5[i]][col5[i]].setBorder(BorderFactory.createLineBorder(Color.red));
 						}
+						for (int i = 0; i < row5.length; i++){
+							labelsG2[row5[i]][col5[i]].setText("5");
+						}
 					}
 				}
 				
@@ -1790,6 +1896,7 @@ public class StartScreen {
 						labelsG2[0][10].setBorder(BorderFactory.createLineBorder(Color.green));
 					}else{
 						labelsG2[0][10].setBorder(BorderFactory.createLineBorder(Color.red));
+						labelsG2[0][10].setText("6");
 					}
 				}
 				
@@ -1801,6 +1908,9 @@ public class StartScreen {
 					}else{
 						for (int i = 0; i < row7.length; i++){
 							labelsG2[row7[i]][col7[i]].setBorder(BorderFactory.createLineBorder(Color.red));
+						}
+						for (int i = 0; i < row7.length; i++){
+							labelsG2[row7[i]][col7[i]].setText("7");
 						}
 					}
 				}
@@ -1815,6 +1925,9 @@ public class StartScreen {
 						for (int i = 0; i < row8.length; i++){
 							labelsG2[row8[i]][col8[i]].setBorder(BorderFactory.createLineBorder(Color.red));
 						}
+						for (int i = 0; i < row8.length; i++){
+							labelsG2[row8[i]][col8[i]].setText("8");
+						}
 					}
 				}
 				
@@ -1826,6 +1939,9 @@ public class StartScreen {
 					}else{
 						for (int i = 0; i < row9.length; i++){
 							labelsG2[row9[i]][col9[i]].setBorder(BorderFactory.createLineBorder(Color.red));
+						}
+						for (int i = 0; i < row9.length; i++){
+							labelsG2[row9[i]][col9[i]].setText("9");
 						}
 					}
 				}
@@ -1839,6 +1955,9 @@ public class StartScreen {
 						for (int i = 0; i < row10.length; i++){
 							labelsG2[row10[i]][col10[i]].setBorder(BorderFactory.createLineBorder(Color.red));
 						}
+						for (int i = 0; i < row10.length; i++){
+							labelsG2[row10[i]][col10[i]].setText("10");
+						}
 					}
 				}
 				
@@ -1850,6 +1969,9 @@ public class StartScreen {
 					}else{
 						for (int i = 0; i < row13.length; i++){
 							labelsG2[row13[i]][col13[i]].setBorder(BorderFactory.createLineBorder(Color.red));
+						}
+						for (int i = 0; i < row13.length; i++){
+							labelsG2[row13[i]][col13[i]].setText("13");
 						}
 					}
 				}
@@ -1863,6 +1985,9 @@ public class StartScreen {
 						for (int i = 0; i < row14.length; i++){
 							labelsG2[row14[i]][col14[i]].setBorder(BorderFactory.createLineBorder(Color.red));
 						}
+						for (int i = 0; i < row14.length; i++){
+							labelsG2[row14[i]][col14[i]].setText("14");
+						}
 					}
 				}
 				
@@ -1875,6 +2000,9 @@ public class StartScreen {
 						for (int i = 0; i < row15.length; i++){
 							labelsG2[row15[i]][col15[i]].setBorder(BorderFactory.createLineBorder(Color.red));
 						}
+						for (int i = 0; i < row15.length; i++){
+							labelsG2[row15[i]][col15[i]].setText("15");
+						}
 					}
 				}
 				
@@ -1886,6 +2014,9 @@ public class StartScreen {
 					}else{
 						for (int i = 0; i < row16.length; i++){
 							labelsG2[row16[i]][col16[i]].setBorder(BorderFactory.createLineBorder(Color.red));
+						}
+						for (int i = 0; i < row16.length; i++){
+							labelsG2[row16[i]][col16[i]].setText("16");
 						}
 					}
 				}
@@ -1900,6 +2031,9 @@ public class StartScreen {
 							labelsG2[row18[i]][col18[i]].setBorder(BorderFactory.createLineBorder(Color.red));
 						}
 					}
+					for (int i = 0; i < row18.length; i++){
+						labelsG2[row18[i]][col18[i]].setText("18");
+					}
 				}
 				
 				if (currValue19 != null){
@@ -1910,6 +2044,9 @@ public class StartScreen {
 					}else{
 						for (int i = 0; i < row19.length; i++){
 							labelsG2[row19[i]][col19[i]].setBorder(BorderFactory.createLineBorder(Color.red));
+						}
+						for (int i = 0; i < row19.length; i++){
+							labelsG2[row19[i]][col19[i]].setText("19");
 						}
 					}
 				}
@@ -1924,6 +2061,9 @@ public class StartScreen {
 						for (int i = 0; i < row20.length; i++){
 							labelsG2[row20[i]][col20[i]].setBorder(BorderFactory.createLineBorder(Color.red));
 						}
+						for (int i = 0; i < row20.length; i++){
+							labelsG2[row20[i]][col20[i]].setText("20");
+						}
 					}
 				}
 				
@@ -1935,6 +2075,9 @@ public class StartScreen {
 					}else{
 						for (int i = 0; i < row21.length; i++){
 							labelsG2[row21[i]][col21[i]].setBorder(BorderFactory.createLineBorder(Color.red));
+						}
+						for (int i = 0; i < row21.length; i++){
+							labelsG2[row21[i]][col21[i]].setText("21");
 						}
 					}
 				}
@@ -1948,6 +2091,9 @@ public class StartScreen {
 						for (int i = 0; i < row22.length; i++){
 							labelsG2[row22[i]][col22[i]].setBorder(BorderFactory.createLineBorder(Color.red));
 						}
+						for (int i = 0; i < row22.length; i++){
+							labelsG2[row22[i]][col22[i]].setText("22");
+						}
 					}
 				}
 				
@@ -1959,6 +2105,9 @@ public class StartScreen {
 					}else{
 						for (int i = 0; i < row23.length; i++){
 							labelsG2[row23[i]][col23[i]].setBorder(BorderFactory.createLineBorder(Color.red));
+						}
+						for (int i = 0; i < row23.length; i++){
+							labelsG2[row23[i]][col23[i]].setText("23");
 						}
 					}
 				}
@@ -1972,6 +2121,9 @@ public class StartScreen {
 						for (int i = 0; i < row24.length; i++){
 							labelsG2[row24[i]][col24[i]].setBorder(BorderFactory.createLineBorder(Color.red));
 						}
+						for (int i = 0; i < row24.length; i++){
+							labelsG2[row24[i]][col24[i]].setText("24");
+						}
 					}
 				}
 				
@@ -1984,6 +2136,9 @@ public class StartScreen {
 						for (int i = 0; i < row25.length; i++){
 							labelsG2[row25[i]][col25[i]].setBorder(BorderFactory.createLineBorder(Color.red));
 						}
+						for (int i = 0; i < row25.length; i++){
+							labelsG2[row25[i]][col25[i]].setText("25");
+						}
 					}
 				}
 				
@@ -1992,6 +2147,7 @@ public class StartScreen {
 						labelsG2[10][6].setBorder(BorderFactory.createLineBorder(Color.green));
 					}else{
 						labelsG2[10][6].setBorder(BorderFactory.createLineBorder(Color.red));
+						labelsG2[10][6].setText("26");
 					}
 				}
 			}
@@ -1999,12 +2155,23 @@ public class StartScreen {
 		
 		btn2GHint.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				String[] allValues = {"K", "N", "R", "T", "U", "J", "M", "I", "E", "Y", "X", "W", "S", "D", "O", "C", "B", "Q", "Z", "A", "H", "P", "G", "V", "L", "F"};
-				Random getRandomHint = new Random();
-				int hintIndex = getRandomHint.nextInt(26);
-				int hintValue = hintIndex + 1;
-				String currentHint = allValues[hintIndex];
-				JOptionPane.showInputDialog("The letter for #" + hintValue + " is " + currentHint);
+				HintFunction getHintTwo = new HintFunction();
+				getHintTwo.getRandomHintTwo();
+				JOptionPane.showMessageDialog(null, "The letter for #" + getHintTwo.getHintValueTwo() + " is " + getHintTwo.getCurrentHintTwo());
+			}
+		});
+		
+		btn2GRestart.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+					panelGridTwo.setVisible(false);
+					timer2var = 0;
+					lblRules.setVisible(true);
+					lblRules1.setVisible(true);
+					lblRules2.setVisible(true);
+					lblRules3.setVisible(true);
+					lblRules4.setVisible(true);
+					lblRules5.setVisible(true);
+					btnStart.setVisible(true);
 			}
 		});
 		
@@ -2026,16 +2193,9 @@ public class StartScreen {
 				}
 			}
 		});
+		
 		/**
 		 * End of Grid Two Action Listeners.
-		 */
-		
-		/**
-		 * High Scores Action Listeners.
-		 */
-		
-		/**
-		 * End of High Score Action Listeners
 		 */
 	}
 }
